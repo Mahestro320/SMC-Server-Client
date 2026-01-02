@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{135be8ac-637d-44e3-a09f-9144e7e873f3}</ProjectGuid>
+    <RootNamespace>SMCServer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)include;$(SolutionDir)Shared/include;</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)External;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)include;$(SolutionDir)Shared/include;</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)External;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)include;</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)external;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)include;</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)external;</ExternalIncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)%(Filename).obj</ObjectFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)%(Filename).obj</ObjectFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)%(Filename).obj</ObjectFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)_WIN32_WINNT=0x0601</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)%(Filename).obj</ObjectFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)_WIN32_WINNT=0x0601</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\io\console.cpp" />
+    <ClCompile Include="src\io\directories.cpp" />
+    <ClCompile Include="src\io\logger.cpp" />
+    <ClCompile Include="src\io\sfs.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\network\bfl\encoder.cpp" />
+    <ClCompile Include="src\network\client.cpp" />
+    <ClCompile Include="src\network\request\analyzer.cpp" />
+    <ClCompile Include="src\network\request\handlers\get_version.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_copy_file.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_create_directory.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_create_file.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_delete_file.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_file_exists.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_get_dir_content.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_get_file_content.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_get_file_size.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_get_file_type.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_get_real_path.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_move_file.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_set_file_content.cpp" />
+    <ClCompile Include="src\network\request\handlers\io_set_file_name.cpp" />
+    <ClCompile Include="src\network\request\handlers\logout.cpp" />
+    <ClCompile Include="src\network\request\handlers\restart_server.cpp" />
+    <ClCompile Include="src\network\request\handlers\run_syscmd.cpp" />
+    <ClCompile Include="src\network\request\handler.cpp" />
+    <ClCompile Include="src\network\request\handlers\login.cpp" />
+    <ClCompile Include="src\network\response\builder.cpp" />
+    <ClCompile Include="src\server.cpp" />
+    <ClCompile Include="src\server\config.cpp" />
+    <ClCompile Include="src\server\sysvar.cpp" />
+    <ClCompile Include="src\users\loader.cpp" />
+    <ClCompile Include="src\users\uif\decoder.cpp" />
+    <ClCompile Include="src\users\manager.cpp" />
+    <ClCompile Include="src\network.cpp" />
+    <ClCompile Include="src\util\fs.cpp" />
+    <ClCompile Include="src\util\resolver\con_str_prop.cpp" />
+    <ClCompile Include="src\util\thread.cpp" />
+    <ClCompile Include="src\util\time.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\network\request\analyzer.hpp" />
+    <ClInclude Include="include\network\request\factory.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_copy_file.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_move_file.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_set_file_name.hpp" />
+    <ClInclude Include="include\common.hpp" />
+    <ClInclude Include="include\io\directories.hpp" />
+    <ClInclude Include="include\network\request\handlers\get_version.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_create_directory.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_create_file.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_delete_file.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_set_file_content.hpp" />
+    <ClInclude Include="include\network\request\handlers\restart_server.hpp" />
+    <ClInclude Include="include\network\request\handlers\run_syscmd.hpp" />
+    <ClInclude Include="include\network\response\builder.hpp" />
+    <ClInclude Include="include\server.hpp" />
+    <ClInclude Include="include\server\sysvar.hpp" />
+    <ClInclude Include="include\util\fs.hpp" />
+    <ClInclude Include="include\io\logger.hpp" />
+    <ClInclude Include="include\io\sfs.hpp" />
+    <ClInclude Include="include\network\bfl\encoder.hpp" />
+    <ClInclude Include="include\network\client.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_file_exists.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_get_dir_content.hpp" />
+    <ClInclude Include="include\network\request\handler.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_get_file_content.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_get_file_size.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_get_file_type.hpp" />
+    <ClInclude Include="include\network\request\handlers\io_get_real_path.hpp" />
+    <ClInclude Include="include\network\request\handlers\logout.hpp" />
+    <ClInclude Include="include\network\request\handlers\login.hpp" />
+    <ClInclude Include="include\server\config.hpp" />
+    <ClInclude Include="include\users\fs_config.hpp" />
+    <ClInclude Include="include\users\loader.hpp" />
+    <ClInclude Include="include\users\uif\decoder.hpp" />
+    <ClInclude Include="include\users\manager.hpp" />
+    <ClInclude Include="include\users\uif\values.hpp" />
+    <ClInclude Include="include\users\user.hpp" />
+    <ClInclude Include="include\network.hpp" />
+    <ClInclude Include="include\util\ptr.hpp" />
+    <ClInclude Include="include\util\resolver\con_str_prop.hpp" />
+    <ClInclude Include="include\util\termcolor_map.hpp" />
+    <ClInclude Include="include\util\resolver\evs_str.hpp" />
+    <ClInclude Include="include\util\thread.hpp" />
+    <ClInclude Include="include\util\time.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\config.ini" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.vcxproj">
+      <Project>{f082250a-e13e-433c-9479-ab37a6538a38}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
