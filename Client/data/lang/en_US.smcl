@@ -1,0 +1,430 @@
+
+HEADER;
+	.name = "English";
+	.locale = "en_US";
+	.version = 1.0.0;
+	.authors = [
+		"Mahestro"
+	];
+END;
+
+SECTION command;
+	SECTION _global.error;
+		STRBEGIN "error: ";
+
+		.invalid_args = "invalid command argument";
+		.unknown_option = "unknown option: \"${}\"";
+		.unknown_sub_option = "unknown sub option: \"${}\"";
+		.unknown_cmd = "unknown command: \"${}\"";
+		.no_cmd_found_for = "no command found for \"${}\"";
+
+		SECTION cannot_run_cmd;
+			STRBEGIN "can't run this command: ";
+
+			.not_logged = "not logged";
+			.invalid_perms = "invalid permissions";
+		END;
+	END;
+
+	SECTION clear.error;
+		STRBEGIN "error while clearing screen: ";
+
+		.get_handle = "can't get console handle";
+		.get_new_mode = "can't get new console mode";
+		.set_new_mode = "can't set new console mode";
+		.restore_mode = "can't restore original mode";
+	END;
+
+	SECTION conf;
+		.key_value = "${}: ${}";
+		.key_resolved_value = "${} (resolved): ${}";
+		.section_name = "[${}]";
+		.binding = "${} = ${}";
+	END;
+
+	SECTION dir;
+		.empty = "\t(empty)";
+		.content_of = "content of \"${}\" (${} files):";
+		.type = "type";
+		.size = "size";
+		.name = "name";
+	END;
+
+	SECTION help;
+		.infos = "to get more information about an command, type \"help <command name>\"\n"
+		         "available commands usage:";
+		.name = "name";
+		.short_name = "short name";
+		.short_description = "short description";
+		.can_use_offline = "can use offline";
+
+		SECTION error;
+			STRBEGIN "error: help: ";
+
+			.unknown_cmd = "unknown command: \"${}\"";
+			.cannot_use_cmd = "you can't use this command as an ${}";
+		END;
+	END;
+
+	SECTION login;
+		.successfull_connect = "successfully connected as ${} (${})";
+
+		SECTION error;
+			STRBEGIN "error: ";
+
+			.empty_username = "empty username";
+			.long_username = "too long username";
+			.long_password = "too long password";
+		END;
+	END;
+
+	SECTION server;
+		.version = "server version: ${} (${})";
+	END;
+
+	SECTION io_load.error;
+		STRBEGIN "[IO NETWORK ERROR] error while downloading file: ";
+
+		SECTION out;
+			.stream_nullptr = "output stream is nullptr";
+			.no_more_data = "no more data to read";
+		END;
+
+		SECTION in;
+			.stream_nullptr = "input stream is nullptr";
+			.no_more_data = "no more data to send";
+		END;
+	END;
+
+	SECTION upload;
+		.uploading_files = "uploading ${} files";
+
+		SECTION error;
+			STRBEGIN "[UPLOAD ERROR] ";
+			.while_getting_output_path = "error while getting output path: ${}";
+		END;
+	END;
+
+	SECTION download;
+		.downloading_files = "downloading ${} files";
+
+		SECTION error;
+			STRBEGIN "[DOWNLOAD ERROR] ";
+			.while_getting_output_path = "error while getting output path: ${}";
+		END;
+	END;
+
+	SECTION lang;
+		.infos = "lang infos:";
+		.name = "name: ${}";
+		.locale = "locale: ${}";
+		.version = "version: ${}";
+		.authors = "authors:";
+		.unknown_lang = "unknown language: ${}";
+	END;
+END;
+
+SECTION command_info;
+	SECTION help;
+		.short_description = "show help";
+		.long_description = "usage: help <command name (optional)>\n"
+		                    "if command name is given, it prints the long description of it\n"
+		                    "wait... you already know that because you had to do that to access this text :)";
+	END;
+
+	SECTION infos;
+		.short_description = "print shell infos";
+	END;
+
+	SECTION clear;
+		.short_description = "clear the screen";
+	END;
+
+	SECTION quit;
+		.short_description = "exit the shell";
+	END;
+
+	SECTION conf;
+		.long_description = "usage: conf <option> [option args]\n"
+		                    "the options are:\n"
+		                    "\tload    load file\n"
+		                    "\tsave    update file with new values\n"
+		                    "\tprint   prints all the values\n"
+		                    "\tset     set a value with a key using [<key> <value>]\n"
+		                    "\tget     gets a value from a key using [<key>]";
+	END;
+
+	SECTION print;
+		.short_description = "prints text";
+		.long_description = "usage: print <text...>";
+	END;
+
+	SECTION login;
+		.short_description = "log in as an user";
+		.long_description = "usage: login <username> <password>";
+	END;
+
+	SECTION logout;
+		.short_description = "log out";
+	END;
+
+	SECTION client;
+		.long_description = "usage: client <option>\n"
+		                    "the options are:\n"
+                            "\tconnect      connects to the server\n"
+                            "\tdisconnect   disconnects from the server";
+	END;
+
+	SECTION server;
+		.long_description = "usage: server <option <sub option>>\n"
+		                    "the options are:\n"
+                            "\tget-version   print the server version\n"
+                            "\trestart (admin):\n"
+                            "\t\tprogram   (default) restart the program\n"
+                            "\t\tmachine   reboot the machine";
+	END;
+
+	SECTION dir;
+		.short_description = "show the content of the current directory";
+		.long_description = "usage: dir <folder (optional)>\n";
+	END;
+
+	SECTION chdir;
+		.short_description = "sets the current directory";
+		.long_description = "usage: chdir <location>\n"
+		                    "the location is relative to the current directory";
+	END;
+
+	SECTION download;
+		.short_description = "download a file";
+		.long_description = "usage: download <input path>";
+	END;
+
+	SECTION upload;
+		.short_description = "upload a file";
+		.long_description = "usage: upload <input path (client)> <output path (optional)>";
+	END;
+
+	SECTION sysmcd;
+		.short_description = "executes a server system command";
+		.long_description = "usage: syscmd <command>";
+	END;
+
+	SECTION mkfile;
+		.short_description = "creates a file";
+		.long_description = "usage: mkfile <filename>";
+	END;
+
+	SECTION mkdir;
+		.short_description = "creates a directory";
+		.long_description = "usage: mkdir <filename>";
+	END;
+
+	SECTION delete;
+		.short_description = "delete a file / directory";
+		.long_description = "usage: delete <filepath>";
+	END;
+
+	SECTION rename;
+		.short_description = "rename a file / directory";
+		.long_description = "usage: rename <filepath> <new name>";
+	END;
+
+	SECTION edit;
+		.short_description = "modify a text file";
+		.long_description = "usage: edit <filepath>";
+	END;
+
+	SECTION lang;
+		.short_description = "manage shell language";
+		.long_description = "usage: lang <options...>\n"
+		                    "the options are:\n"
+							"\tinfo         show current language infos\n"
+							"\tset          set the current language\n"
+							"\t\t<language name / file name>\n"
+							"\treload       reload the current language";
+	END;
+
+	SECTION user;
+		.short_description = "manage users: add, remove, ect.";
+		.long_description = "usage: user <options...>\n"
+		                    "the options are:\n"
+							"\tadd <new username>        add a new user\n"
+							"\tdel <target username>     delete a specified user\n"
+							"\tban <target username>     ban a specified user\n"
+							"\tunban <target username>   unban a specified user\n"
+							"\tbanip <target ip>         ban an ip\n";
+	END;
+
+	SECTION move;
+		.short_description = "move a file";
+		.long_description = "usage: move <input path> <output path>\n";
+	END;
+
+	SECTION copy;
+		.short_description = "copy a file";
+		.long_description = "usage: copy <input path> <output path>\n";
+	END;
+END;
+
+SECTION io;
+	SECTION file_type;
+		.none = "NONE";
+		.file = "FILE";
+		.directory = "DIRECTORY";
+	END;
+
+	SECTION error;
+		STRBEGIN "[IO ERROR] ";
+
+		.no_message = "${}";
+
+		.path_not_directory = "the path is not a directory";
+		.file_not_exists = "the file does not exists";
+		.file_not_exists_prc = "the file \"${}\" does not exists";
+		.write = "write error";
+		.unhandled_file_type = "unhandled file type";
+		.open_file = "error while opening file \"${}\": ${}";
+	END;
+END;
+
+SECTION global;
+	.begin_message = "SMC (Super Mega Cool) Client Shell v${} by Mahestro_320";
+	.unknown = "unknown";
+	.done = "done";
+	.operation_cancelled = "operation cancelled";
+	.yes = "yes";
+	.no = "no";
+
+	SECTION error;
+		STRBEGIN "[ERROR] ";
+  
+		.memory = "memory error: ${}";
+		.unhandled_exception = "unhandled exception: ${}";
+		.error = "error: ";
+		.unknown_error = "unknown error";
+	END;
+END;
+
+SECTION network;
+	SECTION error;
+		STRBEGIN "[NETWORK ERROR] ";
+
+		.no_message = "${}";
+
+		.send_buffer_content = "error while sending buffer content: ${}";
+		.buffer_not_sent_completely = "buffer not sent completely !";
+		.buffer_not_read_completely = "buffer not read completely !";
+		.server_returned = "server returned ${} (${})";
+		.send_int = "error while sending int: ${}";
+		.read_int = "error while reading int: ${}";
+		.int_not_read_completely = "int not read completely !";
+		.unknown_response_type = "unknown response type: ${}";
+		.invalid_response = "invalid response: ${}";
+		.invalid_welcome_msg = "server didn't read welcome message properly";
+	END;
+
+	SECTION request_builder;
+		.invalid_type = "request builder: invalid type value range for string";
+	END;
+END;
+
+SECTION bfl;
+	SECTION communicator;
+		.read_data = "reading BFL data";
+	END;
+
+	SECTION decoder;
+		.decode_data = "decoding BFL data... ";
+		
+		SECTION error;
+			.invalid_size = "[BFL DECODER ERROR] invalid BFL size: ${}";
+		END;
+	END;
+END;
+
+SECTION rh;
+	SECTION get_user_role;
+		.user_role = "user role: ${} (${})";
+	END;
+
+	SECTION io_get_file_size;
+		.file_size = "file size: ${} bytes";
+	END;
+
+	SECTION io_get_file_type;
+		SECTION error;
+			.invalid_file_type = "invalid file type: ${}";
+		END;
+	END;
+
+	SECTION io_delete_file;
+		.successfull_delete = "successfully removed ${} files";
+	END;
+
+	SECTION io_get_or_set_file_content;
+		.file_size = "file size: ${} bytes";
+		.buffer_size = "buffer size: ${} bytes";
+		.buffer_count = "buffer count: ${}";
+
+		SECTION error;
+			.read_buffer_flag = "error while reading flag of buffer ${}";
+		END;
+	END;
+
+	SECTION io_get_file_content.error;
+		STRBEGIN "[DOWNLOAD ERROR] ";
+
+		.download_buffer = "error while downloading buffer ${}: ${}";
+		.no_buffer_left = "no buffer left";
+		.no_bytes_read = "no bytes where readed";
+		.server_sent_stop_flag = "server sent STOP flag";
+		.server_sent_error_flag = "server sent ERROR flag";
+		.server_sent_unknown_flag = "server sent unknown flag: ${}";
+	END;
+
+	SECTION io_set_file_content.error;
+		STRBEGIN "[UPLOAD ERROR] ";
+
+		.upload_buffer = "error while uploading buffer ${}: ${}";
+		.buffer_flag = "error while sending flag of buffer ${}";
+	END;
+END;
+
+SECTION client_class;
+	STRBEGIN "[client] ";
+
+	.successfull_connection = "successfully connected to server !";
+	.connect_to_server = "connecting to server at ${}:${}";
+	.send_welcome_message = "sending welcome message";
+	.send_version = "sending version";
+	.server_version = "server version: ${} (${})";
+	.version_ok = "version ok !";
+
+	SECTION error;
+		STRBEGIN "ERROR: ";
+
+		.disconnect_from_server = "disconnected from server";
+		.connect_to_server = "error while connecting to server: ${}";
+		.send_version = "error while sending version";
+		.read_version = "error while reading version";
+	END;
+
+	SECTION warning;
+		STRBEGIN "WARNING: ";
+
+		.server_too_old = "the server is too old ! compatibility errors can appears";
+		.client_too_old = "the client is too old ! compatibility errors can appears;"
+		                  "please update your client version";
+	END;
+END;
+
+SECTION shell;
+	.command_finished = "command finished in ${} with exit code ${}";
+	.command_is_err = " (Error)";
+	.begin_message_ext = "type \"help\" for help";
+END;
+
+SECTION array_editor;
+	.error = "array editor error: ${}";
+END;
