@@ -3,6 +3,9 @@
 The SMC server (SMCS) is a server that receives TCP requests from an SMC Client to access files,
 display directory contents, etc.
 
+> [!NOTE]
+> DefaultUser password is `hello`
+
 ## How to compile
 
 The client is programmed in **C++ (ISO C++20 Standard)**. To compile it, you can use
@@ -134,3 +137,4 @@ for example: `hello, <$username>` -> `<$username>` will be replaced by the usern
 
 properties can be inserted like this: `<:[NAME]=[VALUE]>`. to change text color, do this:
 `<:color=[COLOR]>`
+
