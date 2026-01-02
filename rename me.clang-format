@@ -1,0 +1,18 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 120
+UseTab: Never
+PointerAlignment: Left
+BracedInitializerIndentWidth: 4
+IncludeIsMainSourceRegex: '.*'
+IncludeBlocks: Preserve
+SortIncludes: true
+IncludeCategories:
+  - Regex: '^(<.*>)$'
+    Priority: -1
+  - Regex: '^(\".*\")$'
+    Priority: 0
+SpaceAfterTemplateKeyword: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
