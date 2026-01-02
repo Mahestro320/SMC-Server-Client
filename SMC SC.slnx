@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Client/Client.vcxproj" Id="995f2e47-30b2-45fd-b761-c21410f1fd44" />
+  <Project Path="External/External.vcxproj" Id="885dc3f0-c35e-4e68-9a06-9e77a5946abe" />
+  <Project Path="Server/Server.vcxproj" Id="135be8ac-637d-44e3-a09f-9144e7e873f3" />
+  <Project Path="Shared/Shared.vcxproj" Id="f082250a-e13e-433c-9479-ab37a6538a38" />
+</Solution>
