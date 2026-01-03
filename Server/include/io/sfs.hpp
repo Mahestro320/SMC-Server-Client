@@ -46,7 +46,7 @@ class SFS final {
     pds::file_size_t getFileSize(const std::filesystem::path& path) const;
 
     bool isInDirectory(const std::filesystem::path& path, const std::filesystem::path& directory) const;
-    bool canLexicallyAccess(const std::filesystem::path& path) const;
+    bool canLexicallyAccess(std::filesystem::path path) const;
     bool exists(const std::filesystem::path& path) const;
     bool isSame(const std::filesystem::path& first, const std::filesystem::path& second) const;
     bool isRegularFile(const std::filesystem::path& path) const;

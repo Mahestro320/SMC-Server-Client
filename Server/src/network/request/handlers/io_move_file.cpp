@@ -14,7 +14,7 @@ void IOMoveFileRH::_run() {
         return;
     }
     const SFS& sfs{client->getSFS()};
-    if (!sfs.move(input_path, output_path, &response)) {
+    if (!sfs.move(sfs.absoluteFromUserScope(input_path), sfs.absoluteFromUserScope(output_path), &response)) {
         return;
     }
     sendResponse();

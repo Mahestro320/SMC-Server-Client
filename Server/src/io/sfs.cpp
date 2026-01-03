@@ -19,30 +19,27 @@
 
 namespace fs = std::filesystem;
 
+#pragma warning(push)
+#pragma warning(disable : 26813)
+
 SFS::SFS(Client& client) : client{client} {
 }
 
 fs::path SFS::absoluteFromUserScope(const fs::path& path) const {
     const User& user{client.getUser()};
-#pragma warning(push)
-#pragma warning(disable : 26813)
     if (user.role == Role::User) {
         return dirs::s_network / path;
     } else if (user.role == Role::Admin) {
         return dirs::strg / path;
     }
-#pragma warning(pop)
     return path;
 }
 
 fs::path SFS::relativeToUserScope(const fs::path& path) const {
     const User& user{client.getUser()};
-#pragma warning(push)
-#pragma warning(disable : 26813)
     if (user.role == Role::User) {
         return relative(path, dirs::s_network);
     } else if (user.role == Role::Admin) {
-#pragma warning(pop)
         return relative(path, dirs::strg);
     }
     return path;
@@ -60,7 +57,7 @@ fs::path SFS::relative(const fs::path& path, const fs::path& base) const {
 
 fs::path SFS::real(const fs::path& path) const {
     std::error_code ec{};
-    const fs::path real_path{fs::weakly_canonical(path, ec)};
+    const fs::path real_path{fs::weakly_canonical(path.lexically_normal(), ec)};
     if (ec) {
         console::out::err(ec.message());
         return path;
@@ -113,31 +110,29 @@ pds::file_size_t SFS::getFileSize(const fs::path& path) const {
 }
 
 bool SFS::isInDirectory(const fs::path& path, const fs::path& directory) const {
-    const fs::path abs_path{real(path)};
-    const fs::path abs_dir{real(directory)};
+    const fs::path target_path{real(path)};
+    const fs::path dir_path{real(directory)};
 
-    auto path_it{abs_path.begin()};
-    for (auto dir_it{abs_dir.begin()}; dir_it != abs_dir.end(); ++dir_it, ++path_it) {
-        if (path_it == abs_path.end() || *path_it != *dir_it) {
+    auto path_it{target_path.begin()};
+    for (auto dir_it{dir_path.begin()}; dir_it != dir_path.end(); ++dir_it, ++path_it) {
+        if (path_it == target_path.end() || *path_it != *dir_it) {
             return false;
         }
     }
     return true;
 }
 
-bool SFS::canLexicallyAccess(const fs::path& path) const {
+bool SFS::canLexicallyAccess(fs::path path) const {
+    path = path.lexically_normal();
     if (!client.isLogged()) {
         return false;
     }
     const User& user{client.getUser()};
-#pragma warning(push)
-#pragma warning(disable : 26813)
     if (user.role == Role::Developer) {
         return true;
     } else if (user.role == Role::Admin) {
         return isInDirectory(path, dirs::strg) && !isUIFFile(path);
     } else if (user.role == Role::User) {
-#pragma warning(pop)
         return isSame(path, dirs::s_network) || (isInUPCDirectory(path) || isInDirectory(path, dirs::s_network_shared));
     }
     return true;
@@ -339,3 +334,5 @@ void SFS::buildResponse(const ResponseErrorInfos& infos, ResponseBuilder* respon
         response->buildError(infos);
     }
 }
+
+#pragma warning(pop)

@@ -14,7 +14,7 @@ void IOCopyFileRH::_run() {
         return;
     }
     const SFS& sfs{client->getSFS()};
-    if (!sfs.copy(input_path, output_path, &response)) {
+    if (!sfs.copy(sfs.absoluteFromUserScope(input_path), sfs.absoluteFromUserScope(output_path), &response)) {
         return;
     }
     sendResponse();
